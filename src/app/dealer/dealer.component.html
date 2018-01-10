@@ -1,0 +1,28 @@
+<div class="container-centre">
+        <div class="col-xs-8 col-sm-8 col-md-8">
+                <div class="row container-centre">
+                        <img src="..\..\..\assets\images\dealer.jpg" alt="No image" height="80px" />
+                </div>
+        </div>
+        <div *ngIf="round" class="col-sm-4 col-md-4" style="vertical-align: middle">
+                <br/>
+                <br/>
+                <span>
+                        <strong>Pot Size: {{round.potSize}}</strong>
+                </span>
+        </div>
+        <div class="col-sm-12 col-md-12">
+                <div *ngIf="flops" [@cardsanimation]="flops.length">
+                        <div class="col-md-2" *ngFor="let card of flops">
+                                <app-card [card]="card" [showBackSide]="false"></app-card>
+                        </div>
+                </div>
+
+                <div *ngIf="turn" class="col-md-2"  [@cardsanimation]="turn">
+                        <app-card [card]="turn" [showBackSide]="false"></app-card>
+                </div>
+                <div *ngIf="river" class="col-md-2" [@cardsanimation]="river">
+                        <app-card [card]="river" [showBackSide]="false"></app-card>
+                </div>
+        </div>
+</div>

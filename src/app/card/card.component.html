@@ -1,0 +1,17 @@
+<div *ngIf="!showBackSide" [ngClass]="{'card':true, 'card-selected':card.isSelected}" >
+    <div class="container-left">
+        <app-card-type [type]="card.type"></app-card-type>
+    </div>
+
+    <div class="container-suit">
+        <app-suit [suit]="card.suit"></app-suit>
+    </div>
+
+    <div class="container-right">
+        <app-card-type [type]="card.type"></app-card-type>
+    </div>
+</div>
+
+<div *ngIf="showBackSide" class="card">
+        <img src="..\..\..\assets\images\card-back.jpg" alt="No image" height="100%" width="100%" class="img-rounded"/>        
+</div>

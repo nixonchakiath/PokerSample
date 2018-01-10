@@ -1,0 +1,31 @@
+<div class="col-md-8" style="margin-top: 1em; margin-bottom: 1em;">
+  <button mat-raised-button color="primary" class="md-raised md-cornered md-primary" (click)="playRound()" [disabled]="isPlaying">Play</button>
+  <button mat-raised-button color="primary" class="md-raised md-cornered md-primary" (click)="showFlop()" [disabled]="flops.length > 0">Flop</button>
+  <button mat-raised-button color="primary" class="md-raised md-cornered md-primary" (click)="showTurn()" [disabled]="turn">Turn</button>
+  <button mat-raised-button color="primary" class="md-raised md-cornered md-primary" (click)="showRiver()" [disabled]="river">River</button>
+  <button mat-raised-button color="primary" class="md-raised md-cornered md-primary" (click)="finishRound()" [disabled]="!allCardsShown || roundFinished">Finish Round</button>
+</div>
+
+<div class="col-md-8" style="margin-top: 1em; margin-bottom: 1em;">
+  <button mat-raised-button color="primary" class="md-raised md-cornered md-primary" (click)="testRun()">Test Run</button>
+  <button mat-raised-button color="primary" class="md-raised md-cornered md-primary" (click)="checkAllRanks()" [disabled]="!allCardsShown">Recheck Ranks</button>
+  <button mat-raised-button color="primary" class="md-raised md-cornered md-primary" (click)="recheckWinner()" [disabled]="!allCardsShown">Determine Winner</button>
+</div>
+
+<div class="col-md-8">
+  <span *ngIf="winnerPlayer">
+    <strong style="color: darkgreen">{{ winnerPlayer.Name }}</strong> has won with
+    <strong style="color: darkgreen">{{ this.winnerPlayer.CurrentHand.rankDescription }} </strong> !!!
+  </span>
+  <div class="col-md-11">
+    <app-dealer [round]="round" [flops]="flops" [turn]="turn" [river]="river"></app-dealer>
+  </div>
+</div>
+
+<div class="col-md-8 no-space" style="float: left" [@players]="players.length">
+  <div *ngFor="let player of players; let idx = index">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <app-player [player]="player"></app-player>
+    </div>
+  </div>
+</div>
